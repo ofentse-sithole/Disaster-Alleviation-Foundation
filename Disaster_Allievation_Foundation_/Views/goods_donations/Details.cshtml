@@ -1,0 +1,42 @@
+﻿@model Disaster_Allievation_Foundation_.Models.goods_donations
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>goods_donations</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Donor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Donor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.num_items)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.num_items)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.GoodID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
