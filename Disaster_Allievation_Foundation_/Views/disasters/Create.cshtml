@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>disaster</h4>
+<h4>Disaster</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,8 +33,12 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RequireAid" class="control-label"></label>
-                <input asp-for="RequireAid" class="form-control" />
+                <label asp-for="RequireAid" class="control-label">Required Aid Types</label>
+                <select asp-for="RequireAid" class="form-control">
+                    <option value="water">Water Provision</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="food">Food</option>
+                </select>
                 <span asp-validation-for="RequireAid" class="text-danger"></span>
             </div>
             <div class="form-group">
