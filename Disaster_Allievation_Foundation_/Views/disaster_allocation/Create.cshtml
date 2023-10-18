@@ -1,0 +1,48 @@
+﻿@model Disaster_Allievation_Foundation_.Models.disaster_allocation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>disaster_allocation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Allocate_Disaster" class="control-label"></label>
+                <input asp-for="Allocate_Disaster" class="form-control" />
+                <span asp-validation-for="Allocate_Disaster" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Allocate_Money" class="control-label"></label>
+                <input asp-for="Allocate_Money" class="form-control" />
+                <span asp-validation-for="Allocate_Money" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Purchase_Amount" class="control-label"></label>
+                <input asp-for="Purchase_Amount" class="form-control" />
+                <span asp-validation-for="Purchase_Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timestamp" class="control-label"></label>
+                <input asp-for="Timestamp" class="form-control" />
+                <span asp-validation-for="Timestamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

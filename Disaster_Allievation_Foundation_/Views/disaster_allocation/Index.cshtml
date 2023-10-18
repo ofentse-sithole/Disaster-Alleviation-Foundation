@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Disaster_Allievation_Foundation_.Models.disaster_allocation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Allocate_Disaster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Allocate_Money)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchase_Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Allocate_Disaster)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Allocate_Money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Purchase_Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Inventory_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Inventory_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Inventory_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
