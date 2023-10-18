@@ -6,29 +6,32 @@
 
 <h1>Create</h1>
 
-<h4>disaster_allocation</h4>
+<h4>Disaster Allocation</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Allocate_Disaster" class="control-label"></label>
-                <input asp-for="Allocate_Disaster" class="form-control" />
+                <label asp-for="Allocate_Disaster" class="control-label">Choose which Disaster</label>
+                <select asp-for="Allocate_Disaster" class="form-control" id="categorySelect">
+                    <option value="Disaster">Disasters</option>
+                    <option value="Good_Don">Good Donations</option>
+                </select>
                 <span asp-validation-for="Allocate_Disaster" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
-                <label asp-for="Allocate_Money" class="control-label"></label>
+                <label asp-for="Allocate_Money" class="control-label">Amount of money contributing for disaster</label>
                 <input asp-for="Allocate_Money" class="form-control" />
                 <span asp-validation-for="Allocate_Money" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Purchase_Amount" class="control-label"></label>
+                <label asp-for="Purchase_Amount" class="control-label">Purchase Amount for Goods</label>
                 <input asp-for="Purchase_Amount" class="form-control" />
                 <span asp-validation-for="Purchase_Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Timestamp" class="control-label"></label>
+                <label asp-for="Timestamp" class="control-label">Date & Time</label>
                 <input asp-for="Timestamp" class="form-control" />
                 <span asp-validation-for="Timestamp" class="text-danger"></span>
             </div>
