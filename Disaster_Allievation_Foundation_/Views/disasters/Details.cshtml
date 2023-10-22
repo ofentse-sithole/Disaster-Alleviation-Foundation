@@ -10,35 +10,35 @@
     <h4>disaster</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.StartDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EndDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EndDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Location)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Location)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RequiredAid)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequireAid)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RequiredAid)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequireAid)
         </dd>
     </dl>
 </div>
@@ -46,3 +46,30 @@
     <a asp-action="Edit" asp-route-id="@Model?.Disaster_ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<h3>Money Allocation Details</h3>
+
+@if (ViewData["Allocate_Money"] != null)
+{
+    var moneyAllocations = ViewData["Allocate_Money"] as List<Allocation_Money>;
+    foreach (var allocation in moneyAllocations)
+    {
+        <p><strong>All_MoneyID:</strong> @allocation.All_MoneyID</p>
+        <p><strong>Money_allocate:</strong> @allocation.Money_allocate</p>
+        <p><strong>Date:</strong> @allocation.Allocate_Date</p>
+
+    }
+}
+
+<h3>Goods Allocation Details</h3>
+@if (ViewData["Allocate_Goods"] != null)
+{
+    var goodsAllocations = ViewData["Allocate_Goods"] as List<Allocation_Goods>;
+    foreach (var allocation in goodsAllocations)
+    {
+        <p><strong>All_Goods_ID:</strong> @allocation.All_GoodsID</p>
+        <p><strong>Goods_Donation_ID:</strong> @allocation.GoodsDonation_ID</p>
+        <p><strong>Good_Items:</strong> @allocation.Goods_Items</p>
+        <p><strong>Date:</strong> @allocation.Allocate_Date</p>
+    }
+}
