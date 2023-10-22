@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Disaster_Allievation_Foundation_.Data;
 using Disaster_Allievation_Foundation_.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Disaster_Allievation_Foundation_.Controllers
 {
@@ -23,9 +22,9 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // GET: disasters
         public async Task<IActionResult> Index()
         {
-            return _context.disaster != null ?
-                        View(await _context.disaster.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.disaster'  is null.");
+              return _context.disaster != null ? 
+                          View(await _context.disaster.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.disaster'  is null.");
         }
 
         // GET: disasters/Details/5
@@ -57,12 +56,10 @@ namespace Disaster_Allievation_Foundation_.Controllers
             ViewData["Allocate_Goods"] = goodsAllocations;
 
 
-
             return View(disaster);
         }
 
         // GET: disasters/Create
-        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -71,10 +68,9 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // POST: disasters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequireAid")] disaster disaster)
+        public async Task<IActionResult> Create([Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequiredAid")] disaster disaster)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +82,6 @@ namespace Disaster_Allievation_Foundation_.Controllers
         }
 
         // GET: disasters/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.disaster == null)
@@ -105,10 +100,9 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // POST: disasters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequireAid")] disaster disaster)
+        public async Task<IActionResult> Edit(int id, [Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequiredAid")] disaster disaster)
         {
             if (id != disaster.Disaster_ID)
             {
@@ -139,7 +133,6 @@ namespace Disaster_Allievation_Foundation_.Controllers
         }
 
         // GET: disasters/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.disaster == null)
@@ -158,7 +151,6 @@ namespace Disaster_Allievation_Foundation_.Controllers
         }
 
         // POST: disasters/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -172,14 +164,14 @@ namespace Disaster_Allievation_Foundation_.Controllers
             {
                 _context.disaster.Remove(disaster);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool disasterExists(int id)
         {
-            return (_context.disaster?.Any(e => e.Disaster_ID == id)).GetValueOrDefault();
+          return (_context.disaster?.Any(e => e.Disaster_ID == id)).GetValueOrDefault();
         }
     }
 }
