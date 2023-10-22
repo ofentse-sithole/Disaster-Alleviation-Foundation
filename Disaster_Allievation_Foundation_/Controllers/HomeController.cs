@@ -20,7 +20,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         public IActionResult Index()
         {
             int totalAllocatedMoney = _context.Allocation_Money.Sum(am => am.Money_allocate);
-            int totalPurchaseAmount = _context.capture_purchase.Sum(pg => pg.Purchase_Amount);
+            int totalPurchaseAmount = _context.capture_purchase.Sum(pg => pg.PurchaseAmount);
             int availableMoney = totalAllocatedMoney - totalPurchaseAmount;
 
             ViewBag.AvailableMoney = availableMoney;
