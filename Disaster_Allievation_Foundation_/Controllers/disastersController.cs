@@ -43,6 +43,21 @@ namespace Disaster_Allievation_Foundation_.Controllers
                 return NotFound();
             }
 
+            // Load MoneyAllocations for the Disaster using a LINQ query
+            var moneyAllocations = await _context.Allocation_Money
+                .Where(a => a.Disaster_id == id)
+                .ToListAsync();
+
+            ViewData["Allocate_Money"] = moneyAllocations;
+
+            var goodsAllocations = await _context.Allocation_Goods
+        .Where(a => a.Disaster_ID == id)
+        .ToListAsync();
+
+            ViewData["Allocate_Goods"] = goodsAllocations;
+
+           
+
             return View(disaster);
         }
 
