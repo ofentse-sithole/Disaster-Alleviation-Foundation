@@ -12,23 +12,26 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Disaster_ID" class="control-label"></label>
-                <input asp-for="Disaster_ID" class="form-control" />
+                <select asp-for="Disaster_ID" asp-items="ViewBag.DisasterItems" class="form-control"></select>
                 <span asp-validation-for="Disaster_ID" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="GoodsDonation_ID" class="control-label"></label>
-                <input asp-for="GoodsDonation_ID" class="form-control" />
+                <select asp-for="GoodsDonation_ID" asp-items="ViewBag.GoodsItems" class="form-control"></select>
                 <span asp-validation-for="GoodsDonation_ID" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="Goods_Items" class="control-label"></label>
+                <label asp-for="Goods_Items" class="control-label">Items of Goods</label>
                 <input asp-for="Goods_Items" class="form-control" />
                 <span asp-validation-for="Goods_Items" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Allocate_Date" class="control-label"></label>
+                <label asp-for="Allocate_Date" class="control-label">Date Allocation</label>
                 <input asp-for="Allocate_Date" class="form-control" />
                 <span asp-validation-for="Allocate_Date" class="text-danger"></span>
             </div>
