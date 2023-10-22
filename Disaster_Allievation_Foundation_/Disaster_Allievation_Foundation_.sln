@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disaster_Allievation_Foundation_", "Disaster_Allievation_Foundation_\Disaster_Allievation_Foundation_.csproj", "{886653D7-526C-4B75-9ACA-AF0F9D010FC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{886653D7-526C-4B75-9ACA-AF0F9D010FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886653D7-526C-4B75-9ACA-AF0F9D010FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886653D7-526C-4B75-9ACA-AF0F9D010FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886653D7-526C-4B75-9ACA-AF0F9D010FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AFB46C9-4B23-45DC-859E-5B4CECE4EF84}
+	EndGlobalSection
+EndGlobal
