@@ -18,6 +18,10 @@ namespace Disaster_Allievation_Foundation_.Data
 
         public DbSet<disaster> disaster { get; set; }
 
-        public DbSet<disaster_allocation> disaster_allocation { get; set; }
+        public DbSet<Allocation_Money> Allocation_Money { get; set; }
+        
+        public DbSet<Allocation_Goods> Allocation_Goods { get; set;}
+
+        public DbSet<capture_purchase> capture_purchase { get; set; }
     }
 }
