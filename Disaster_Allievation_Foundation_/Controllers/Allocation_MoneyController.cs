@@ -48,6 +48,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // GET: Allocation_Money/Create
         public IActionResult Create()
         {
+            ViewBag.DisasterItems = new SelectList(_context.disaster, "Disaster_ID", "Disaster_ID");
             return View();
         }
 
