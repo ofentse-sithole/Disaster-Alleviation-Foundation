@@ -6,29 +6,50 @@
 
 <h1>Create</h1>
 
-<h4>goods_donations</h4>
+<h4>Goods Donations</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Donor" class="control-label"></label>
-                <input asp-for="Donor" class="form-control" />
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" asp-for="Donor" class="form-check-input" />
+                    <label class="form-check-label" asp-for="Donor">Remain Anonymous</label>
+                </div>
+                <br />
+                <label asp-for="Donor" class="control-label">Donor Name</label>
+                <input type="text" asp-for="Donor" class="form-control form-control-inline" />
                 <span asp-validation-for="Donor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="num_items" class="control-label"></label>
+                <label asp-for="num_items" class="control-label">Number of Items</label>
                 <input asp-for="num_items" class="form-control" />
                 <span asp-validation-for="num_items" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="category" class="control-label"></label>
-                <input asp-for="category" class="form-control" />
+                <label asp-for="category" class="control-label">Category</label>
+                <select asp-for="category" class="form-control" id="categorySelect">
+                    <option value="clothes">Clothes</option>
+                    <option value="Non-perishablefoods">Non-perishable foods</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" asp-for="category" class="form-control" id="customCategoryInput" style="display: none;" placeholder="Enter custom category">
                 <span asp-validation-for="category" class="text-danger"></span>
+
+                <script>
+                    document.getElementById('categorySelect').addEventListener('change', function () {
+                        var customCategoryInput = document.getElementById('customCategoryInput');
+                        if (this.value === 'other') {
+                            customCategoryInput.style.display = 'block';
+                        } else {
+                            customCategoryInput.style.display = 'none';
+                        }
+                    });
+                </script>
             </div>
             <div class="form-group">
-                <label asp-for="description" class="control-label"></label>
+                <label asp-for="description" class="control-label">Description</label>
                 <input asp-for="description" class="form-control" />
                 <span asp-validation-for="description" class="text-danger"></span>
             </div>

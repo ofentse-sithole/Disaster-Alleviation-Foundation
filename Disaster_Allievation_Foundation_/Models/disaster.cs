@@ -16,6 +16,6 @@ namespace Disaster_Allievation_Foundation_.Models
 
         public String Description { get; set; }
 
-        public String RequireAid { get; set; }
+        public String RequiredAid { get; set; }
     }
 }

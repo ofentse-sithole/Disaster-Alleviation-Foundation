@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Disaster_Allievation_Foundation_.Models.Allocation_Goods>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Disaster_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoodsDonation_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goods_Items)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Allocate_Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disaster_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodsDonation_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goods_Items)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Allocate_Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.All_GoodsID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.All_GoodsID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.All_GoodsID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

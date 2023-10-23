@@ -6,16 +6,21 @@
 
 <h1>Create</h1>
 
-<h4>monetary_donations</h4>
+<h4>Monetary Donations</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Donor" class="control-label"></label>
-                <input asp-for="Donor" class="form-control" />
-                <span asp-validation-for="Donor" class="text-danger"></span>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" asp-for="Donor" class="form-check-input" />
+                <label class="form-check-label" asp-for="Donor">Remain Anonymous</label>
+            </div>
+            <br />
+            <label asp-for="Donor" class="control-label">Donor Name</label>
+            <input type="text" asp-for="Donor" class="form-control form-control-inline" />
+            <span asp-validation-for="Donor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>

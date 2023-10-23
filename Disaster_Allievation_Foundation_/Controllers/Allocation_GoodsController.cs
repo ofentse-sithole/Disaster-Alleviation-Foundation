@@ -7,95 +7,92 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Disaster_Allievation_Foundation_.Data;
 using Disaster_Allievation_Foundation_.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Disaster_Allievation_Foundation_.Controllers
 {
-    public class goods_donationsController : Controller
+    public class Allocation_GoodsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public goods_donationsController(ApplicationDbContext context)
+        public Allocation_GoodsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: goods_donations
+        // GET: Allocation_Goods
         public async Task<IActionResult> Index()
         {
-              return _context.goods_donations != null ? 
-                          View(await _context.goods_donations.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.goods_donations'  is null.");
+              return _context.Allocation_Goods != null ? 
+                          View(await _context.Allocation_Goods.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Allocation_Goods'  is null.");
         }
 
-        // GET: goods_donations/Details/5
+        // GET: Allocation_Goods/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.goods_donations == null)
+            if (id == null || _context.Allocation_Goods == null)
             {
                 return NotFound();
             }
 
-            var goods_donations = await _context.goods_donations
-                .FirstOrDefaultAsync(m => m.GoodID == id);
-            if (goods_donations == null)
+            var allocation_Goods = await _context.Allocation_Goods
+                .FirstOrDefaultAsync(m => m.All_GoodsID == id);
+            if (allocation_Goods == null)
             {
                 return NotFound();
             }
 
-            return View(goods_donations);
+            return View(allocation_Goods);
         }
 
-        // GET: goods_donations/Create
-        [Authorize]
+        // GET: Allocation_Goods/Create
         public IActionResult Create()
         {
+            ViewBag.DisasterItems = new SelectList(_context.disaster, "Disaster_ID", "Disaster_ID");
+            ViewBag.GoodsItems = new SelectList(_context.goods_donations, "GoodID", "GoodID");
             return View();
         }
 
-        // POST: goods_donations/Create
+        // POST: Allocation_Goods/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GoodID,Donor,num_items,category,description")] goods_donations goods_donations)
+        public async Task<IActionResult> Create([Bind("All_GoodsID,Disaster_ID,GoodsDonation_ID,Goods_Items,Allocate_Date")] Allocation_Goods allocation_Goods)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(goods_donations);
+                _context.Add(allocation_Goods);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(goods_donations);
+            return View(allocation_Goods);
         }
 
-        // GET: goods_donations/Edit/5
-        [Authorize]
+        // GET: Allocation_Goods/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.goods_donations == null)
+            if (id == null || _context.Allocation_Goods == null)
             {
                 return NotFound();
             }
 
-            var goods_donations = await _context.goods_donations.FindAsync(id);
-            if (goods_donations == null)
+            var allocation_Goods = await _context.Allocation_Goods.FindAsync(id);
+            if (allocation_Goods == null)
             {
                 return NotFound();
             }
-            return View(goods_donations);
+            return View(allocation_Goods);
         }
 
-        // POST: goods_donations/Edit/5
+        // POST: Allocation_Goods/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GoodID,Donor,num_items,category,description")] goods_donations goods_donations)
+        public async Task<IActionResult> Edit(int id, [Bind("All_GoodsID,Disaster_ID,GoodsDonation_ID,Goods_Items,Allocate_Date")] Allocation_Goods allocation_Goods)
         {
-            if (id != goods_donations.GoodID)
+            if (id != allocation_Goods.All_GoodsID)
             {
                 return NotFound();
             }
@@ -104,12 +101,12 @@ namespace Disaster_Allievation_Foundation_.Controllers
             {
                 try
                 {
-                    _context.Update(goods_donations);
+                    _context.Update(allocation_Goods);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!goods_donationsExists(goods_donations.GoodID))
+                    if (!Allocation_GoodsExists(allocation_Goods.All_GoodsID))
                     {
                         return NotFound();
                     }
@@ -120,51 +117,49 @@ namespace Disaster_Allievation_Foundation_.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(goods_donations);
+            return View(allocation_Goods);
         }
 
-        // GET: goods_donations/Delete/5
-        [Authorize]
+        // GET: Allocation_Goods/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.goods_donations == null)
+            if (id == null || _context.Allocation_Goods == null)
             {
                 return NotFound();
             }
 
-            var goods_donations = await _context.goods_donations
-                .FirstOrDefaultAsync(m => m.GoodID == id);
-            if (goods_donations == null)
+            var allocation_Goods = await _context.Allocation_Goods
+                .FirstOrDefaultAsync(m => m.All_GoodsID == id);
+            if (allocation_Goods == null)
             {
                 return NotFound();
             }
 
-            return View(goods_donations);
+            return View(allocation_Goods);
         }
 
-        // POST: goods_donations/Delete/5
-        [Authorize]
+        // POST: Allocation_Goods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.goods_donations == null)
+            if (_context.Allocation_Goods == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.goods_donations'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Allocation_Goods'  is null.");
             }
-            var goods_donations = await _context.goods_donations.FindAsync(id);
-            if (goods_donations != null)
+            var allocation_Goods = await _context.Allocation_Goods.FindAsync(id);
+            if (allocation_Goods != null)
             {
-                _context.goods_donations.Remove(goods_donations);
+                _context.Allocation_Goods.Remove(allocation_Goods);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool goods_donationsExists(int id)
+        private bool Allocation_GoodsExists(int id)
         {
-          return (_context.goods_donations?.Any(e => e.GoodID == id)).GetValueOrDefault();
+          return (_context.Allocation_Goods?.Any(e => e.All_GoodsID == id)).GetValueOrDefault();
         }
     }
 }

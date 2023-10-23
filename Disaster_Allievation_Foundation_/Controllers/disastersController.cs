@@ -42,6 +42,20 @@ namespace Disaster_Allievation_Foundation_.Controllers
                 return NotFound();
             }
 
+            // Load MoneyAllocations for the Disaster using a LINQ query
+            var moneyAllocations = await _context.Allocation_Money
+                .Where(a => a.Disaster_id == id)
+                .ToListAsync();
+
+            ViewData["Allocate_Money"] = moneyAllocations;
+
+            var goodsAllocations = await _context.Allocation_Goods
+        .Where(a => a.Disaster_ID == id)
+        .ToListAsync();
+
+            ViewData["Allocate_Goods"] = goodsAllocations;
+
+
             return View(disaster);
         }
 
@@ -56,7 +70,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequireAid")] disaster disaster)
+        public async Task<IActionResult> Create([Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequiredAid")] disaster disaster)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +102,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequireAid")] disaster disaster)
+        public async Task<IActionResult> Edit(int id, [Bind("Disaster_ID,StartDate,EndDate,Location,Description,RequiredAid")] disaster disaster)
         {
             if (id != disaster.Disaster_ID)
             {
