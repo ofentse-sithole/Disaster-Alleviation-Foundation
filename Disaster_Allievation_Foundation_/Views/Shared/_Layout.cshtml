@@ -34,19 +34,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="disasters" asp-action="Index">Disaster</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="dropdown-item" asp-area="" asp-controller="Allocation_Money" asp-action="Index">Money Allocation</a>
-                        </li>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="allocationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Allocation
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="allocationDropdown">
+                                <a class="dropdown-item" href="/Allocation_Money/Index">Money Allocation</a>
+                                <a class="dropdown-item" href="/Allocation_Goods/Index">Goods Allocation</a>
+                                <a class="dropdown-item" href="/capture_purchase/Index">Purchase</a>
+                            </div>
+                        </div>
 
-                        <li class="nav-item">
-                            <a class="dropdown-item" asp-area="" asp-controller="Allocation_Goods" asp-action="Index">Goods Allocation</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="dropdown-item" asp-area="" asp-controller="capture_purchase" asp-action="Index">Purchase</a>
-                        </li>
-
-                     
 
                     </ul>
                     <partial name="_LoginPartial" />
