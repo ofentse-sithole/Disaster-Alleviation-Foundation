@@ -33,8 +33,14 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RequiredAid" class="control-label"></label>
-                <input asp-for="RequiredAid" class="form-control" />
+                <label asp-for="RequiredAid" class="control-label">Required Aid Types</label>
+                <select asp-for="RequiredAid" class="form-control">
+                    <option value="water">Water Provision</option>
+                    <option value="medical supplies">Medical Supplies</option>
+                    <option value="food">Food</option>
+                    <option value="shelter">Shelter</option>
+                    <option value="clothing">Clothing</option>
+                </select>
                 <span asp-validation-for="RequiredAid" class="text-danger"></span>
             </div>
             <div class="form-group">
