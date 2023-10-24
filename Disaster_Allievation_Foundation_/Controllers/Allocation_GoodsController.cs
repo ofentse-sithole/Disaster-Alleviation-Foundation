@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Disaster_Allievation_Foundation_.Data;
 using Disaster_Allievation_Foundation_.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Disaster_Allievation_Foundation_.Controllers
 {
@@ -46,6 +47,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         }
 
         // GET: Allocation_Goods/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewBag.DisasterItems = new SelectList(_context.disaster, "Disaster_ID", "Disaster_ID");
@@ -56,6 +58,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // POST: Allocation_Goods/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("All_GoodsID,Disaster_ID,GoodsDonation_ID,Goods_Items,Allocate_Date")] Allocation_Goods allocation_Goods)
@@ -70,6 +73,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         }
 
         // GET: Allocation_Goods/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Allocation_Goods == null)
@@ -88,6 +92,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         // POST: Allocation_Goods/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("All_GoodsID,Disaster_ID,GoodsDonation_ID,Goods_Items,Allocate_Date")] Allocation_Goods allocation_Goods)
@@ -121,6 +126,7 @@ namespace Disaster_Allievation_Foundation_.Controllers
         }
 
         // GET: Allocation_Goods/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Allocation_Goods == null)
@@ -138,7 +144,9 @@ namespace Disaster_Allievation_Foundation_.Controllers
             return View(allocation_Goods);
         }
 
+
         // POST: Allocation_Goods/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
