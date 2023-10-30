@@ -13,5 +13,5 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build Disaster_Allievation_Foundation/DisasterAllievationFoundation.sln --configuration $(buildConfiguration)
+- script: dotnet build Disaster_Allievation_Foundation_/DisasterAllievationFoundation.sln --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
