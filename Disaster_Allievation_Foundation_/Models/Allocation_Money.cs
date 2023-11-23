@@ -12,5 +12,7 @@ namespace Disaster_Allievation_Foundation_.Models
         public int Money_allocate { get; set; }
 
         public DateTime Allocate_Date { get; set; }
+
+        
     }
 }

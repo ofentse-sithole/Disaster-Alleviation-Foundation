@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Disaster_Allievation_Foundation_.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace Disaster_Allievation_Foundation_.Models
 {
@@ -14,5 +15,6 @@ namespace Disaster_Allievation_Foundation_.Models
         public  int Goods_Items { get; set; }
 
         public DateTime Allocate_Date { get; set; }
+
     }
 }

@@ -12,6 +12,7 @@ namespace Disaster_Allievation_Foundation_.Data
 
         }
 
+        // Add the DbSet properties here
         public DbSet<monetary_donations> monetary_donations { get; set; }
 
         public DbSet<goods_donations> goods_donations { get; set; }
@@ -23,5 +24,6 @@ namespace Disaster_Allievation_Foundation_.Data
         public DbSet<Allocation_Goods> Allocation_Goods { get; set;}
 
         public DbSet<capture_purchase> capture_purchase { get; set; }
+
     }
 }

@@ -161,5 +161,6 @@ namespace Disaster_Allievation_Foundation_.Controllers
         {
           return (_context.Allocation_Goods?.Any(e => e.All_GoodsID == id)).GetValueOrDefault();
         }
+
     }
 }

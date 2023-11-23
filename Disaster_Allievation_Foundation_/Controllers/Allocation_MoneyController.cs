@@ -160,5 +160,26 @@ namespace Disaster_Allievation_Foundation_.Controllers
         {
           return (_context.Allocation_Money?.Any(e => e.All_MoneyID == id)).GetValueOrDefault();
         }
+
+        //Used within the UnitTest
+        private const int LIMIT = 8;
+        private int limitBalance;
+
+        public int LimitBalance { get { return limitBalance; } set { limitBalance = value; } }
+
+        public void checkList(int limit)
+        {
+            if (limit < 0)
+            {
+                throw new ArgumentOutOfRangeException("limit", limit, "The value was lesser than 0");
+            }
+
+            if (limit > LIMIT) // Ensure LIMIT is declared and has the correct value
+            {
+                throw new ArgumentOutOfRangeException("limit", limit, "The value exceeds the limit");
+            }
+
+            limitBalance -= limit;
+        }
     }
 }
