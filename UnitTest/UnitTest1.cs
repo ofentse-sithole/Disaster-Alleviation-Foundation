@@ -48,6 +48,7 @@ namespace UnitTest
             }
         }
 
+        //Test method for checklist to see if limit balance is decreased
         [TestMethod]
         public void TestCheckListDecreasesLimitBalance()
         {
@@ -55,7 +56,7 @@ namespace UnitTest
             int initialLimitBalance = 10;
             int limit = 5;
 
-            var controller = new Allocation_MoneyController(null); // Pass null as the ApplicationDbContext for this example
+            var controller = new Allocation_MoneyController(null); 
 
             // Act
             controller.LimitBalance = initialLimitBalance;
@@ -65,6 +66,7 @@ namespace UnitTest
             Assert.AreEqual(initialLimitBalance - limit, controller.LimitBalance);
         }
 
+        //Test method for checklist to see if limit is negative
         [TestMethod]
         public void TestCheckListWithNegativeLimitThrowsException()
         {
@@ -81,10 +83,11 @@ namespace UnitTest
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(ArgumentOutOfRangeException));
-                // Optionally, add more assertions or log the exception for further investigation
             }
         }
 
+
+        //Test method for checklist to see if limit is exceeded
         [TestMethod]
         public void TestCheckListWithLimitExceedsThrowsException()
         {
@@ -101,7 +104,6 @@ namespace UnitTest
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(ArgumentOutOfRangeException));
-                // Optionally, add more assertions or log the exception for further investigation
             }
         }
     }

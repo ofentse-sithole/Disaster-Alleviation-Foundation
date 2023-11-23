@@ -23,7 +23,6 @@ namespace Disaster_Allievation_Foundation_.Data
         
         public DbSet<Allocation_Goods> Allocation_Goods { get; set;}
 
-        public DbSet<capture_purchase> capture_purchase { get; set; }
 
     }
 }
