@@ -19,10 +19,17 @@ namespace Disaster_Allievation_Foundation_.Controllers
 
         public IActionResult Index()
         {
-            int totalAllocatedMoney = _context.Allocation_Money.Sum(am => am.Money_allocate);
-            int totalPurchaseAmount = _context.capture_purchase.Sum(pg => pg.PurchaseAmount);
-            int availableMoney = totalAllocatedMoney - totalPurchaseAmount;
+            //Calcuations for Total Goods Donations
 
+            //Calculation for Total Monetary Donations
+            int monetaryDonations = _context.monetary_donations.Sum(md => md.Amount);
+
+            //calculation for Available Money
+            int totalAllocatedMoney = _context.Allocation_Money.Sum(am => am.Money_allocate);
+            int availableMoney = monetaryDonations - totalAllocatedMoney;
+
+            ViewBag.monetaryDonations = monetaryDonations;
+            ViewBag.totalAllocatedMoney = totalAllocatedMoney;
             ViewBag.AvailableMoney = availableMoney;
             return View();
         }
