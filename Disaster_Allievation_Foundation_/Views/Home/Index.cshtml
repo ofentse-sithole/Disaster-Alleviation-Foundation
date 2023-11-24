@@ -16,7 +16,7 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text">Available Money: <span class="badge bg-primary">@ViewBag.AvailableMoney</span></p>
+                        <p class="card-text">Available Money: <span class="badge bg-primary">@Model.totalMoney</span></p>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text">Total Goods: <span class="badge bg-primary">@ViewBag.totalAllocatedMoney</span></p>
+                        <p class="card-text">Total Goods: <span class="badge bg-primary">@Model.totalAllocatedMoney</span></p>
                     </div>
                 </div>
             </div>
@@ -40,11 +40,47 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text">Total Monetary Donations: <span class="badge bg-primary">@ViewBag.monetaryDonations</span></p>
+                        <p class="card-text">Total Monetary Donations: <span class="badge bg-primary">@Model.monetaryDonations</span></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br/>
+@foreach (var disaster in Model.disaster)
+{
+    <div class="donation-section" style="background-color: white; color: mediumpurple;">
+        <h2 class="h2">
+            @disaster.StartDate.ToShortDateString().ToUpper() - @disaster.EndDate.ToShortDateString().ToUpper()
+        </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Location</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 40%;">Required Aids</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@disaster.Location</td>
+                    <td>
+                        @if (disaster.Description.Length > 60)
+                        {
+                            @disaster.Description.Substring(0, 60)
+                        }
+                        else
+                        {
+                            @disaster.Description
+                        }
+                    </td>
+                    <td>@disaster.RequiredAid</td>
+                </tr>
+            </tbody>
+        </table>
+
+       
+    </div>
+}
 

@@ -8,31 +8,33 @@ namespace Disaster_Allievation_Foundation_.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //Calcuations for Total Goods Donations
+            var viewModel = new HomeViewModel
+            {
 
-            //Calculation for Total Monetary Donations
-            int monetaryDonations = _context.monetary_donations.Sum(md => md.Amount);
+                disaster = await _context.disaster.ToListAsync(),
+                Allocation_Goods = await _context.Allocation_Goods.ToListAsync(),
+                Allocation_Money = await _context.Allocation_Money.ToListAsync(),
+                monetary_donations = await _context.monetary_donations.ToListAsync(),
+                goods_donations = await _context.goods_donations.ToListAsync(),
 
-            //calculation for Available Money
-            int totalAllocatedMoney = _context.Allocation_Money.Sum(am => am.Money_allocate);
-            int availableMoney = monetaryDonations - totalAllocatedMoney;
+                monetaryDonations = await _context.monetary_donations.SumAsync(m => m.Amount),
+                totalAllocatedMoney = await _context.Allocation_Money.SumAsync(m => m.Money_allocate),
+                totalMoney = await _context.monetary_donations.SumAsync(m => m.Amount) - await _context.Allocation_Money.SumAsync(m => m.Money_allocate)
 
-            ViewBag.monetaryDonations = monetaryDonations;
-            ViewBag.totalAllocatedMoney = totalAllocatedMoney;
-            ViewBag.AvailableMoney = availableMoney;
-            return View();
-        }
+
+            };
+               
+            return View(viewModel);
+    }
 
         public IActionResult Privacy()
         {
