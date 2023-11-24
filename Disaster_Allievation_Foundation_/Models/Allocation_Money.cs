@@ -14,10 +14,6 @@ namespace Disaster_Allievation_Foundation_.Models
 
         public DateTime Allocate_Date { get; set; }
 
-        // Define the relationships with other tables
-        //[ForeignKey("DisasterId")]
-        //public virtual disaster? disaster { get; set; }
-
 
     }
 }

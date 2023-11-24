@@ -11,8 +11,6 @@
 
         public int monetaryDonations { get; set; }
 
-
-
         public int totalAllocatedMoney { get; set; }
 
         public int totalMoney { get; set; }
