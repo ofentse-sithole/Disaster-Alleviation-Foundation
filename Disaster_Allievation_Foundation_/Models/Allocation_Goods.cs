@@ -1,5 +1,6 @@
 ﻿using Disaster_Allievation_Foundation_.Data;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Disaster_Allievation_Foundation_.Models
 {
